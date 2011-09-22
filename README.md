@@ -7,7 +7,7 @@ Tested with knockout v1.2.1, jQuery 1.4.2 and mustache.js v0.4.0-dev.
 ##Notes
 
 Main problem I've encountered while creating this engine is fact that knockout is assuming that any templating library is going to provide a way for embedding and
-executing inline javascript from the templates. This is not the case with mustache.js, so for now I was forced to use an *eval* to make it work.
+executing inline javascript from the templates. This is not the case with mustache.js, so for now I was forced to use an *eval* to make it work (which is potentially very evil function to be used ;)).
 **Attention** - until I come up with a better solution, keep in mind, that this library can be vulnerable to XSS attacks unless used with care and proper user-data escaping.
 
 ##Installation
