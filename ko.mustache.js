@@ -73,5 +73,5 @@ mustacheTemplateEngine = function () {
             return input;
         };
 };
-mustacheTemplateEngine.version = '1.0.0'
+mustacheTemplateEngine.version = '0.8.0'
 mustacheTemplateEngine.prototype = new ko.templateEngine();
