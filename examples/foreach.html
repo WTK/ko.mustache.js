@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+	<title>ko.mustache.js example</title>
+	<script type="text/javascript" src="../lib/mustache.js"></script>
+	<script type="text/javascript" src="../lib/knockout-2.1.0.debug.js"></script>
+	<script type="text/javascript" src="../ko.mustache.js"></script>
+	<script>
+		ko.setTemplateEngine(new ko.mustacheTemplateEngine());
+	</script>
+</head>
+<body>
+	<!-- place for rendered template -->
+	<div data-bind="template: {name: 'personTemplate', foreach: people}">
+	</div>
+	<!-- mustache template -->
+	<script id='personTemplate' type='text/html'>
+		<div>
+			{{ name }} is <span data-bind="text: age"></span> <button data-bind="click: $parent.makeOlder">Make Older</button>
+		</div>
+	</script>
+	<!-- knockout model and bindings -->
+	<script type='text/javascript'>
+		var viewModel = {
+			people: [{
+				name: 'Martin',
+				age: ko.observable(78)
+			}, {
+				name: 'John',
+				age: ko.observable(21)
+			}],
+
+			makeOlder: function (person) {
+				person.age(person.age() + 1);
+			}
+		};
+		ko.applyBindings(viewModel);
+
+		
+	</script>
+</body>
+</html>
