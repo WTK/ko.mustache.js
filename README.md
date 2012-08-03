@@ -4,12 +4,6 @@ ko.mustache.js is a template engine for [knockoutjs](http://knockoutjs.com). It 
 
 Tested with Knockout v2.1 and mustache.js v0.5.1-dev.
 
-##Notes
-
-Main problem I've encountered while creating this engine is fact that knockout is assuming that any templating library is going to provide a way for embedding and
-executing inline javascript from the templates. This is not the case with mustache.js, so for now I was forced to use an *eval* to make it work (which is potentially very evil function to be used ;)).
-**Beware** - until I come up with a better solution, please keep in mind, that this library can be vulnerable to XSS attacks unless used with care and proper user-data escaping. You've been warned.
-
 ##Usage
 
 
