@@ -21,7 +21,7 @@ Set default template engine to be used by Knockout. Make sure you do that **befo
 		<script type="text/javascript" src="lib/knockout-2.1.0.js"></script>
 		<script type="text/javascript" src="ko.mustache.js"></script>
 		<script>
-			ko.setTemplateEngine(new mustacheTemplateEngine());
+			ko.setTemplateEngine(new ko.mustacheTemplateEngine());
 		</script>
 	</head>
 	<body>
