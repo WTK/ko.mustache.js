@@ -10,7 +10,7 @@ Tested with Knockout v2.1 and mustache.js v0.5.1-dev.
 Set default template engine to be used by Knockout. Make sure you do that **before** of your custom Knockout related code (like creating observables, applying bindings etc.).
 
 	// Set ko.mustache.js as a template engine for knockout
-	ko.setTemplateEngine(new mustacheTemplateEngine());
+	ko.setTemplateEngine(new ko.mustacheTemplateEngine());
 
 ##Example
 
