@@ -37,20 +37,41 @@
 
 ko.mustacheTemplateEngine = function () { }
 
-ko.mustacheTemplateEngine.prototype = ko.utils.extend(new ko.templateEngine(), {
+ko.mustacheTemplateEngine.prototype = ko.utils.extend(new ko.templateEngine(), (function () {
 	
-	renderTemplateSource: function (templateSource, bindingContext, options) {
-		var data = bindingContext.$data;
-		var templateText = templateSource.text();		
-		var htmlResult = Mustache.to_html(templateText, data);
-		
-		return ko.utils.parseHtmlFragment(htmlResult);
-	},
+    function getPartials(arr) {
+        if (arr === undefined || arr === null || arr.length === 0) {
+            return undefined;   
+        }
+        
+        var partials = {};
+        
+        for (var i = 0; i < arr.length; i++) {
+            var partialId = arr[i];
+            var partialContent = document.getElementById(partialId).innerHTML;
+            
+            partials[partialId] = partialContent;
+        }
+        
+        return partials;
+    }
+    
+    return {
+        renderTemplateSource: function (templateSource, bindingContext, options) {
+            var data = bindingContext.$data;
+            var templateText = templateSource.text();
+            var partials = getPartials(options.partials);
+            
+            var htmlResult = Mustache.to_html(templateText, data, partials);
 
-	allowTemplateRewriting: false,
-	
-	version: '0.9.0'
+            return ko.utils.parseHtmlFragment(htmlResult);
+        },
 
-});
+        allowTemplateRewriting: false,
+
+        version: '0.9.0'
+    };
+
+}()));
 
 
