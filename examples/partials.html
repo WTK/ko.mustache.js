@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<title>ko.mustache.js example</title>
+	<script type="text/javascript" src="../lib/mustache.js"></script>
+	<script type="text/javascript" src="../lib/knockout-2.1.0.js"></script>
+	<script type="text/javascript" src="../ko.mustache.js"></script>
+	<script>
+		ko.setTemplateEngine(new ko.mustacheTemplateEngine());
+	</script>
+</head>
+<body>
+	<!-- place for rendered template -->
+	<div data-bind='template: {name: "parentTemplate", partials: ["childTemplate"]}'></div>
+
+	<!-- mustache templates -->
+	<script id='parentTemplate' type='text/html'>
+        <ul>
+            <li>
+                {{name}}
+                <ul>
+                    {{#children}}
+                        {{>childTemplate}}
+                    {{/children}}
+                </ul>
+            </li>
+        </ul>
+	</script>
+    
+    <script id='childTemplate' type='text/html'>
+        <li>{{name}}</li>
+    </script>
+	
+	<!-- knockout model and bindings -->
+	<script type='text/javascript'>
+		var viewModel = {
+			name: 'Jason',
+            children: [
+                { name: 'One' },
+                { name: 'Two' },
+                { name: 'Three' }
+            ]
+		};
+		ko.applyBindings(viewModel);
+	</script>
+</body>
+</html>
